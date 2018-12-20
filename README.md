@@ -1,4 +1,7 @@
 # mr-flap-js
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/pinussilvestrus/mr-flap-js.svg)](https://greenkeeper.io/)
+
 Game 'Mr Flap' written in javascript - Work in progress
 
 # Development

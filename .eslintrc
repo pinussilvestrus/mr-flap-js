@@ -2,5 +2,11 @@
     "extends": "standard",
     "rules": {
         "semi": [2, "always"]
+    },
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "jquery": true
     }
 }

@@ -1,0 +1,34 @@
+{
+  "name": "mr-flap",
+  "version": "1.0.0",
+  "description": "Game `Mr Flap` written in javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "dev": "gulp default && gulp dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinussilvestrus/mr-flap-js.git"
+  },
+  "author": "pinussilvestrus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinussilvestrus/mr-flap-js/issues"
+  },
+  "homepage": "https://github.com/pinussilvestrus/mr-flap-js#readme",
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-open": "^3.0.1"
+  }
+}

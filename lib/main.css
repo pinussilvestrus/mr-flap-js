@@ -1,0 +1,17 @@
+.figure { 
+    width:100px; 
+    height:100px; 
+    margin-top:180px; 
+    transform-origin:200% center; 
+    position: relative; 
+    animation: rotate 3s linear infinite; 
+}
+
+.figure:before { 
+    content:''; 
+    position:absolute;
+    height:100%; 
+    width:100%;
+    background:blue; 
+    animation:rotate 3s linear reverse infinite; 
+}

@@ -1,13 +1,9 @@
-.playground {
+.figure {
     width:100px;
     height:100px;
     margin: 20px auto 0;
-    font-size:100px;
-    line-height:1;
-    animation: circle 4s linear infinite;
-    transform-origin:50% 200px;
-}
-
-.figure {
-    animation: inner-circle 4s linear infinite;
+    font-size: 100px;
+    line-height: 1;
+    animation: circlePath 3s linear infinite;
+    transform-origin: 50% 200px;
 }

@@ -13,7 +13,8 @@ const configuration = {
     src: {
       css: './lib/**/*.css',
       html: './lib/**/*.html',
-      js: './lib/**/*.js'
+      js: './lib/**/*.js',
+      vendor: './lib/vendor/*'
     },
     dist: './dist'
   },
@@ -47,6 +48,11 @@ gulp.task('js', function () {
     .pipe(connect.reload());
 });
 
+gulp.task('vendor', function () {
+  return gulp.src(configuration.paths.src.vendor)
+    .pipe(gulp.dest(`${configuration.paths.dist}/vendor`));
+});
+
 gulp.task('connect', function () {
   return connect.server({
     root: configuration.paths.dist,
@@ -76,4 +82,4 @@ gulp.task('watch', gulp.parallel(['watchCss', 'watchHtml', 'watchJs']));
 
 gulp.task('dev', gulp.parallel(['connect', 'open', 'watch']));
 
-gulp.task('default', gulp.series(['clean', 'html', 'css', 'js']));
+gulp.task('default', gulp.series(['clean', 'html', 'css', 'js', 'vendor']));

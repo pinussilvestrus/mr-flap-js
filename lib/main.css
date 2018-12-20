@@ -1,17 +1,13 @@
-.figure { 
-    width:100px; 
-    height:100px; 
-    margin-top:180px; 
-    transform-origin:200% center; 
-    position: relative; 
-    animation: rotate 3s linear infinite; 
+.playground {
+    width:100px;
+    height:100px;
+    margin: 20px auto 0;
+    font-size:100px;
+    line-height:1;
+    animation: circle 4s linear infinite;
+    transform-origin:50% 200px;
 }
 
-.figure:before { 
-    content:''; 
-    position:absolute;
-    height:100%; 
-    width:100%;
-    background:blue; 
-    animation:rotate 3s linear reverse infinite; 
+.figure {
+    animation: inner-circle 4s linear infinite;
 }

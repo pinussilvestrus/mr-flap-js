@@ -1,4 +1,4 @@
-.figure {
+.mrflap-figure {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -8,4 +8,8 @@
     line-height: 1;
     animation: circlePath 5s linear infinite;
     transform-origin: 50% 200px;
+}
+
+.mrflap-header {
+    text-align: center;
 }

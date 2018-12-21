@@ -4,15 +4,17 @@ const open = require('gulp-open');
 
 const connect = require('gulp-connect');
 
-const clean = require('gulp-clean');
+const del = require('del');
 
 const concat = require('gulp-concat');
+
+const rename = require('gulp-rename');
 
 const configuration = {
   paths: {
     src: {
       css: './lib/**/*.css',
-      html: './lib/**/*.html',
+      html: './lib/index.dev.html',
       js: './lib/**/*.js',
       vendor: './lib/vendor/*'
     },
@@ -25,25 +27,29 @@ const configuration = {
 };
 
 gulp.task('clean', function () {
-  return gulp.src(configuration.paths.dist, { read: false })
-    .pipe(clean());
+  return del([
+    './dist/*',
+    '!./dist/.gitignore'
+  ]);
 });
 
 gulp.task('html', function () {
   return gulp.src(configuration.paths.src.html)
+    .pipe(rename('index.html'))
     .pipe(gulp.dest(configuration.paths.dist))
     .pipe(connect.reload());
 });
 
 gulp.task('css', function () {
   return gulp.src(configuration.paths.src.css)
-    .pipe(concat('all.css'))
+    .pipe(concat('mrflap.dev.css'))
     .pipe(gulp.dest(configuration.paths.dist))
     .pipe(connect.reload());
 });
 
 gulp.task('js', function () {
   return gulp.src(configuration.paths.src.js)
+    .pipe(concat('mrflap.dev.js'))
     .pipe(gulp.dest(configuration.paths.dist))
     .pipe(connect.reload());
 });

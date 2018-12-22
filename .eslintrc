@@ -3,7 +3,8 @@
     "rules": {
         "semi": [2, "always"],
         "no-trailing-spaces": ["error", { "skipBlankLines": true }],
-        "padded-blocks": ["error", "always"]
+        "padded-blocks": ["error", "always"],
+        "no-console": "error"
     },
     "env": {
         "browser": true,

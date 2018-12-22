@@ -20,3 +20,7 @@ $ npm run dev
 * **refactor**(refactoring production code, eg. renaming a variable)
 * **test**(adding missing tests, refactoring tests; no production code change)
 * **chore**(updating gulp tasks etc; no production code change)
+
+## Definition of Done
+
+See our [Definition of Done](https://github.com/pinussilvestrus/mr-flap-js/blob/master/DEFINITION_OF_DONE.md).

@@ -1,16 +1,12 @@
-/* global it, describe, define */
-define(['../node_modules/chai/chai'], function (chai) {
+/* global it, describe, assert */
 
-  const expect = chai.expect;
+describe('Demo index page', function () {
 
-  describe('Test suite', function () {
+  it('should be opened', function () {
 
-    it('should work', function () {
-
-      expect(true).to.equal(true);
+    // todo(pinussilvestrus): implement index integration test
+    assert.equal(true, true);
     
-    });
-  
   });
-
+  
 });

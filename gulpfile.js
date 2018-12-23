@@ -10,18 +10,22 @@ const concat = require('gulp-concat');
 
 const rename = require('gulp-rename');
 
+var KarmaServ = require('karma').Server;
+
 const configuration = {
   paths: {
     src: {
-      css: './lib/**/*.css',
-      html: './lib/index.dev.html',
-      js: './lib/**/*.js',
-      vendor: './lib/vendor/*'
+      css: `${__dirname}/lib/**/*.css`,
+      html: `${__dirname}/lib/index.dev.html`,
+      js: `${__dirname}/lib/**/*.js`,
+      vendor: `${__dirname}/lib/vendor/*`
     },
-    dist: './dist'
+    dist: `${__dirname}/dist`,
+    test: `${__dirname}/test`
   },
   localServer: {
     port: 8001,
+    testPort: 9999,
     url: 'http://localhost:8001/'
   }
 };
@@ -109,3 +113,12 @@ gulp.task('watch', gulp.parallel(['watchCss', 'watchHtml', 'watchJs']));
 gulp.task('dev', gulp.parallel(['connect', 'open', 'watch']));
 
 gulp.task('default', gulp.series(['clean', 'html', 'css', 'js', 'vendor']));
+
+gulp.task('test', gulp.series(['default'], function (done) {
+
+  return new KarmaServ({
+    configFile: `${configuration.paths.test}/config/karma.unit.js`,
+    singleRun: true
+  }, done).start();
+
+}));

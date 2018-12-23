@@ -11,6 +11,11 @@ $ npm i
 $ npm run dev
 ```
 
+# Testing
+```sh
+$ npm run test
+```
+
 ## Commit Message Guidelines
 
 * **feat**(new feature for the user, not a new feature for build script)

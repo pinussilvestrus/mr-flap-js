@@ -10,13 +10,15 @@ module.exports = function (config) {
     files: [
       'dist/**/*.js',
       'dist/**/*.css',
+      'dist/*.html',
       'test/**/*.js'
     ],
     exclude: [
     ],
     preprocessors: {
       'dist/**/*.js': ['babel'],
-      'test/**/*.js': ['babel']
+      'test/**/*.js': ['babel'],
+      'dist/*.html': ['html2js']
     },
     reporters: ['spec'],
     specReporter: {
@@ -47,6 +49,14 @@ module.exports = function (config) {
       sourceFileName: function (file) {
 
         return file.originalPath;
+      
+      }
+    },
+    html2JsPreprocessor: {
+      stripPrefix: 'dist/',
+      processPath: function (filePath) {
+
+        return filePath.replace(/\.html$/, '');
       
       }
     }

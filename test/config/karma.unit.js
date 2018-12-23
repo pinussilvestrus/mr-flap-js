@@ -8,14 +8,15 @@ module.exports = function (config) {
     basePath: '../..',
     frameworks: ['mocha', 'chai'],
     files: [
-      'lib/**/*.js',
-      'lib/**/*.css',
+      'dist/**/*.js',
+      'dist/**/*.css',
       'test/**/*.js'
     ],
     exclude: [
     ],
     preprocessors: {
-      'lib/**/*.js': ['babel']
+      'dist/**/*.js': ['babel'],
+      'test/**/*.js': ['babel']
     },
     reporters: ['spec'],
     specReporter: {
@@ -35,7 +36,7 @@ module.exports = function (config) {
     concurrency: Infinity,
     babelPreprocessor: {
       options: {
-        presets: ['env'],
+        presets: ['es2015'],
         sourceMap: 'inline'
       },
       filename: function (file) {

@@ -10,6 +10,8 @@ const concat = require('gulp-concat');
 
 const rename = require('gulp-rename');
 
+const babel = require('gulp-babel');
+
 var KarmaServ = require('karma').Server;
 
 const configuration = {
@@ -60,6 +62,9 @@ gulp.task('css', function () {
 gulp.task('js', function () {
 
   return gulp.src(configuration.paths.src.js)
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(concat('mrflap.dev.js'))
     .pipe(gulp.dest(configuration.paths.dist))
     .pipe(connect.reload());

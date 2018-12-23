@@ -8,9 +8,7 @@ module.exports = function (config) {
     basePath: '../..',
     frameworks: ['mocha', 'chai'],
     files: [
-      'dist/**/*.js',
-      'dist/**/*.css',
-      'dist/*.html',
+      'dist/*',
       'test/**/*.js'
     ],
     exclude: [
@@ -53,12 +51,7 @@ module.exports = function (config) {
       }
     },
     html2JsPreprocessor: {
-      stripPrefix: 'dist/',
-      processPath: function (filePath) {
-
-        return filePath.replace(/\.html$/, '');
-      
-      }
+      stripPrefix: 'dist/'
     }
 
   });

@@ -1,10 +1,14 @@
 {
     "extends": "standard",
+    "plugins": [
+        "no-only-tests"
+    ],
     "rules": {
         "semi": [2, "always"],
         "no-trailing-spaces": ["error", { "skipBlankLines": true }],
         "padded-blocks": ["error", "always"],
-        "no-console": "error"
+        "no-console": "error",
+        "no-only-tests/no-only-tests": 2
     },
     "env": {
         "browser": true,

@@ -27,21 +27,17 @@ describe('Canvas', function () {
 
   it('#drawBird', function () {
 
-    const src = './dist/vendor/bird.png';
-
     // given
     var canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
 
     // when
-    var bird = canvas.drawBird({
-      src: src
-    });
+    var bird = canvas.drawBird();
 
     // then
     expect(bird).not.to.be.undefined;
-    expect(bird.src).to.equal(src);
+    expect(bird.canvas).to.equal(canvas);
 
     expect(canvas.shapes.length).to.equal(1);
     expect(canvas.shapes[0].id).to.equal('shape-0');

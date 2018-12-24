@@ -51,18 +51,14 @@ describe('Bird', function () {
     });
 
     // when
-    try {
 
-      bird.draw();
-    
-    } catch (e) {
-
-      expect.fail('no error should be raised');
-    
-    }
+    var id = bird.draw();
 
     // then
     expect(bird).to.exist;
+    expect(canvas.shapes.length).to.equal(1);
+    expect(canvas.getShape(id)).not.to.be.undefined;
+    expect(canvas.getShape(id).shape).to.eql(bird);
   
   });
         

@@ -61,5 +61,31 @@ describe('Bird', function () {
     expect(canvas.getShape(id).shape).to.eql(bird);
   
   });
+
+  it('#moveUp', function () {
+
+    // given
+    var bird = new Bird({
+      canvas: canvas,
+      width: width,
+      height: height,
+      x: x,
+      y: y
+    });
+
+    var previousY = bird.y;
+
+    var speed = 10;
+
+    // when
+    bird.moveUp({
+      speed: speed
+    });
+
+    // then
+    expect(bird.y).to.not.equal(previousY);
+    expect(bird.y).to.equal(previousY - speed);
+  
+  });
         
 });

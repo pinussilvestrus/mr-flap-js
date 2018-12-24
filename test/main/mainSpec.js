@@ -35,6 +35,9 @@ describe('Main', function () {
       expect($('.mr-flap-canvas')[0]).to.exist;
     
     });
+
+    // todo(pinussvilestrus): implement tests
+    it.skip('should binding keyboard events');
         
   });
       

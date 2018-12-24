@@ -2,19 +2,19 @@
 /* eslint-disable no-unused-expressions */
 describe('Bird', function () {
     
-  var ctx;
-  
-  var src = '/image.png';
+  var canvas;
+  var width = 12;
+  var height = 12;
+  var x = 0;
+  var y = 0;
     
   beforeEach(function () {
     
     document.body.innerHTML = __html__['index.html'];
     var mrflapDiv = $('.mrflap-playground');
-    var canvas = new Canvas({
+    canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
-
-    ctx = canvas.canvasCtx;
   
   });
     
@@ -22,14 +22,20 @@ describe('Bird', function () {
       
     // given
     var bird = new Bird({
-      canvasCtx: ctx,
-      src: src
+      canvas: canvas,
+      width: width,
+      height: height,
+      x: x,
+      y: y
     });
     
     // then
     expect(bird).not.to.be.undefined;
-    expect(bird.canvasCtx).to.equal(ctx);
-    expect(bird.src).to.equal(src);
+    expect(bird.canvas).to.equal(canvas);
+    expect(bird.width).to.equal(width);
+    expect(bird.height).to.equal(height);
+    expect(bird.x).to.equal(x);
+    expect(bird.y).to.equal(y);
           
   });
   
@@ -37,16 +43,26 @@ describe('Bird', function () {
 
     // given
     var bird = new Bird({
-      canvasCtx: ctx,
-      src: src
+      canvas: canvas,
+      width: width,
+      height: height,
+      x: x,
+      y: y
     });
 
     // when
-    var birdImg = bird.draw();
+    try {
+
+      bird.draw();
+    
+    } catch (e) {
+
+      expect.fail('no error should be raised');
+    
+    }
 
     // then
     expect(bird).to.exist;
-    expect(birdImg.src).to.contain(src);
   
   });
         

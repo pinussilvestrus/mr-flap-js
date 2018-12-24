@@ -44,5 +44,42 @@ describe('Canvas', function () {
     expect(canvas.shapes[0].shape).to.eql(bird);
   
   });
+
+  it('#addShape', function () {
+
+    // given
+    var canvas = new Canvas({
+      mrflapDiv: mrflapDiv
+    });
+
+    var shape = { val: 'foo' };
+
+    // when
+    canvas.addShape(shape);
+
+    // then
+    expect(canvas.shapes.length).to.equal(1);
+  
+  });
+
+  it('#getShape', function () {
+
+    // given
+    var canvas = new Canvas({
+      mrflapDiv: mrflapDiv
+    });
+
+    var shape = { val: 'foo' };
+
+    var id = canvas.addShape(shape);
+
+    // when
+    var s = canvas.getShape(id);
+
+    // then
+    expect(s).not.to.be.undefined;
+    expect(s.shape).to.eql(shape);
+
+  });
       
 });

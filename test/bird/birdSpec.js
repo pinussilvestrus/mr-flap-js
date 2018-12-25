@@ -1,4 +1,4 @@
-/* global it, describe, expect, beforeEach,  __html__, Bird, Canvas */
+/* global it, describe, expect, beforeEach, before,  __html__, Bird, Canvas */
 /* eslint-disable no-unused-expressions */
 describe('Bird', function () {
     
@@ -7,6 +7,8 @@ describe('Bird', function () {
   var height = 12;
   var x = 0;
   var y = 0;
+  var maxY = -30;
+  var minY = 50;
     
   beforeEach(function () {
     
@@ -26,7 +28,9 @@ describe('Bird', function () {
       width: width,
       height: height,
       x: x,
-      y: y
+      y: y,
+      maxY: maxY,
+      minY: minY
     });
     
     // then
@@ -36,6 +40,8 @@ describe('Bird', function () {
     expect(bird.height).to.equal(height);
     expect(bird.x).to.equal(x);
     expect(bird.y).to.equal(y);
+    expect(bird.maxY).to.equal(maxY);
+    expect(bird.minY).to.equal(minY);
           
   });
   
@@ -43,11 +49,7 @@ describe('Bird', function () {
 
     // given
     var bird = new Bird({
-      canvas: canvas,
-      width: width,
-      height: height,
-      x: x,
-      y: y
+      canvas: canvas
     });
 
     // when
@@ -62,29 +64,102 @@ describe('Bird', function () {
   
   });
 
-  it('#moveUp', function () {
+  describe('#moveUp', function () {
 
-    // given
-    var bird = new Bird({
-      canvas: canvas,
-      width: width,
-      height: height,
-      x: x,
-      y: y
+    var bird;
+
+    before(function () {
+
+      bird = new Bird({
+        canvas: canvas
+      });
+  
     });
 
-    var previousY = bird.y;
+    it('should move up', function () {
 
-    var speed = 10;
-
-    // when
-    bird.moveUp({
-      speed: speed
+      // given
+      var previousY = bird.y;
+  
+      var speed = 10;
+  
+      // when
+      bird.moveUp({
+        speed: speed
+      });
+  
+      // then
+      expect(bird.y).to.not.equal(previousY);
+      expect(bird.y).to.equal(previousY - speed);
+    
     });
 
-    // then
-    expect(bird.y).to.not.equal(previousY);
-    expect(bird.y).to.equal(previousY - speed);
+    it('should not move up if edges arrived', function () {
+
+      var previousY = bird.y;
+  
+      var speed = 500;
+  
+      // when
+      bird.moveUp({
+        speed: speed
+      });
+  
+      // then
+      expect(bird.y).to.equal(previousY);
+      expect(bird.y).to.not.equal(previousY - speed);
+    
+    });
+  
+  });
+
+  describe('#moveDown', function () {
+
+    var bird;
+
+    before(function () {
+
+      bird = new Bird({
+        canvas: canvas,
+        minY: 100
+      });
+  
+    });
+
+    it('should move down', function () {
+
+      // given
+      var previousY = bird.y;
+  
+      var speed = 10;
+  
+      // when
+      bird.moveDown({
+        speed: speed
+      });
+  
+      // then
+      expect(bird.y).to.not.equal(previousY);
+      expect(bird.y).to.equal(previousY + speed);
+    
+    });
+
+    it('should not move down if edges arrived', function () {
+
+      var previousY = bird.y;
+  
+      var speed = 500;
+  
+      // when
+      bird.moveDown({
+        speed: speed
+      });
+  
+      // then
+      expect(bird.y).to.equal(previousY);
+      expect(bird.y).to.not.equal(previousY + speed);
+    
+    });
   
   });
         

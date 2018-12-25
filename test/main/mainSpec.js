@@ -1,4 +1,4 @@
-/* global it, describe, expect, before,  __html__, _init */
+/* global it, describe, expect, before,  __html__, _init, bird */
 /* eslint-disable no-unused-expressions */
 describe('Main', function () {
   
@@ -39,6 +39,27 @@ describe('Main', function () {
     // todo(pinussvilestrus): implement tests
     it.skip('should binding keyboard events');
         
+    it('should start gravitiy', function () {
+
+      // given
+      var startY = bird.y;
+      bird.moveUp({
+        speed: 10
+      });
+
+      // assure
+      expect(bird.y).to.equal(startY - 10);
+
+      // when
+      window.setTimeout(function () {
+
+        // then
+        expect(bird.y).to.equal(startY);
+      
+      }, 500);
+    
+    });
+  
   });
       
 });

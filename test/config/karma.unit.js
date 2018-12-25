@@ -13,8 +13,7 @@ module.exports = function (config) {
       'lib/**/*.js'
     ],
     exclude: [
-      'lib/jquery/*',
-      'lib/main/*'
+      'lib/jquery/*'
     ],
     preprocessors: {
       'dist/**/*.js': ['babel'],

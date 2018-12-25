@@ -3,3 +3,9 @@ node_js:
   - "node"
 addons:
   chrome: stable
+install:
+  - npm ci
+  - npm install -g codecov
+script:
+  - npm run test
+  - codecov

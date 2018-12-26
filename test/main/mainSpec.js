@@ -82,7 +82,7 @@ describe('Main', function () {
 
         done();
       
-      }, 1001);
+      }, 500);
     
     });
   

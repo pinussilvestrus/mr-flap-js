@@ -98,16 +98,26 @@ describe('Canvas', function () {
     });
 
     // when
-    var obstacle = canvas.drawObstacle();
+    var {
+      obstacleBottom,
+      obstacleTop
+    } = canvas.drawObstacle();
 
     // then
-    expect(obstacle).not.to.be.undefined;
-    expect(obstacle.canvas).to.equal(canvas);
 
-    expect(canvas.shapes.length).to.equal(1);
+    expect(canvas.shapes.length).to.equal(2);
+
+    expect(obstacleBottom).not.to.be.undefined;
+    expect(obstacleBottom.canvas).to.equal(canvas);
     expect(canvas.shapes[0].id).to.equal('shape-0');
-    expect(canvas.shapes[0].shape).to.eql(obstacle);
+    expect(canvas.shapes[0].shape).to.eql(obstacleBottom);
     expect(canvas.shapes[0].type).to.equal('Obstacle');
+
+    expect(obstacleTop).not.to.be.undefined;
+    expect(obstacleTop.canvas).to.equal(canvas);
+    expect(canvas.shapes[1].id).to.equal('shape-1');
+    expect(canvas.shapes[1].shape).to.eql(obstacleTop);
+    expect(canvas.shapes[1].type).to.equal('Obstacle');
   
   });
 
@@ -118,15 +128,18 @@ describe('Canvas', function () {
       mrflapDiv: mrflapDiv
     });
 
-    var obstacle = canvas.drawObstacle();
-    var originalX = obstacle.x;
+    var {
+      obstacleBottom
+    } = canvas.drawObstacle();
+    
+    var originalX = obstacleBottom.x;
 
     // when
     canvas.moveObstacles();
 
     // then
-    expect(obstacle.x).to.not.equal(originalX);
-    expect(obstacle.x).to.equal(originalX - 10);
+    expect(obstacleBottom.x).to.not.equal(originalX);
+    expect(obstacleBottom.x).to.equal(originalX - 10);
   
   });
       

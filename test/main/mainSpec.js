@@ -1,8 +1,8 @@
-/* global it, describe, expect, before,  __html__, _init, bird */
+/* global it, describe, expect, before,  __html__, _init, bird, canvas */
 /* eslint-disable no-unused-expressions */
 describe('Main', function () {
   
-  describe('#_init', function () {
+  describe('#_init', function (done) {
       
     before(function () {
       
@@ -39,7 +39,7 @@ describe('Main', function () {
     // todo(pinussvilestrus): implement tests
     it.skip('should binding keyboard events');
         
-    it('should start gravitiy', function () {
+    it('should start gravitiy', function (done) {
 
       // given
       var startY = bird.y;
@@ -55,8 +55,34 @@ describe('Main', function () {
 
         // then
         expect(bird.y).to.equal(startY);
+
+        done();
       
       }, 500);
+    
+    });
+
+    it('should start moving obstacles', function (done) {
+
+      // given
+      // todo(pinussilvestrus): not using hardcoded index
+      var obstacle = canvas.shapes[1];
+      var startX = obstacle.shape.x;
+
+      // assure
+      expect(obstacle).to.exist;
+      expect(obstacle.type).to.equal('Obstacle');
+
+      // then
+      window.setTimeout(function () {
+
+        // then
+        expect(obstacle.shape.x).to.not.equal(startX);
+        expect(obstacle.shape.x).to.be.below(startX);
+
+        done();
+      
+      }, 1001);
     
     });
   

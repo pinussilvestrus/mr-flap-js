@@ -42,6 +42,7 @@ describe('Canvas', function () {
     expect(canvas.shapes.length).to.equal(1);
     expect(canvas.shapes[0].id).to.equal('shape-0');
     expect(canvas.shapes[0].shape).to.eql(bird);
+    expect(canvas.shapes[0].type).to.equal('Bird');
   
   });
 
@@ -55,10 +56,15 @@ describe('Canvas', function () {
     var shape = { val: 'foo' };
 
     // when
-    canvas.addShape(shape);
+    canvas.addShape({
+      type: 'foo',
+      shape: shape
+    });
 
     // then
     expect(canvas.shapes.length).to.equal(1);
+    expect(canvas.shapes[0].type).to.equal('foo');
+    expect(canvas.shapes[0].shape).to.eql(shape);
   
   });
 
@@ -71,7 +77,9 @@ describe('Canvas', function () {
 
     var shape = { val: 'foo' };
 
-    var id = canvas.addShape(shape);
+    var id = canvas.addShape({
+      shape: shape
+    });
 
     // when
     var s = canvas.getShape(id);
@@ -80,6 +88,46 @@ describe('Canvas', function () {
     expect(s).not.to.be.undefined;
     expect(s.shape).to.eql(shape);
 
+  });
+
+  it('#drawObstacle', function () {
+
+    // given
+    var canvas = new Canvas({
+      mrflapDiv: mrflapDiv
+    });
+
+    // when
+    var obstacle = canvas.drawObstacle();
+
+    // then
+    expect(obstacle).not.to.be.undefined;
+    expect(obstacle.canvas).to.equal(canvas);
+
+    expect(canvas.shapes.length).to.equal(1);
+    expect(canvas.shapes[0].id).to.equal('shape-0');
+    expect(canvas.shapes[0].shape).to.eql(obstacle);
+    expect(canvas.shapes[0].type).to.equal('Obstacle');
+  
+  });
+
+  it('#moveObstacles', function () {
+
+    // given
+    var canvas = new Canvas({
+      mrflapDiv: mrflapDiv
+    });
+
+    var obstacle = canvas.drawObstacle();
+    var originalX = obstacle.x;
+
+    // when
+    canvas.moveObstacles();
+
+    // then
+    expect(obstacle.x).to.not.equal(originalX);
+    expect(obstacle.x).to.equal(originalX - 10);
+  
   });
       
 });

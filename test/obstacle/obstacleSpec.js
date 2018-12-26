@@ -1,4 +1,4 @@
-/* global it, describe, expect, beforeEach, before,  __html__, Obstacle, Canvas */
+/* global it, describe, expect, beforeEach,  __html__, Obstacle, Canvas */
 /* eslint-disable no-unused-expressions */
 describe('Obstacle', function () {
     
@@ -8,6 +8,7 @@ describe('Obstacle', function () {
   var x = 20;
   var y = 0;
   var maxX = 0;
+  var minX = 200;
   var color = 'black';
       
   beforeEach(function () {
@@ -30,6 +31,7 @@ describe('Obstacle', function () {
       x: x,
       y: y,
       maxX: maxX,
+      minX: minX,
       color: color
     });
       
@@ -41,6 +43,7 @@ describe('Obstacle', function () {
     expect(obstacle.x).to.equal(x);
     expect(obstacle.y).to.equal(y);
     expect(obstacle.maxX).to.equal(maxX);
+    expect(obstacle.minX).to.equal(minX);
     expect(obstacle.color).to.equal(color);
             
   });
@@ -68,7 +71,7 @@ describe('Obstacle', function () {
   
     var obstacle;
   
-    before(function () {
+    beforeEach(function () {
   
       obstacle = new Obstacle({
         canvas: canvas,
@@ -95,11 +98,18 @@ describe('Obstacle', function () {
       
     });
   
-    it('should not move left if edges arrived', function () {
+    it('should respawn to right if edges arrived', function () {
   
       var previousX = obstacle.x;
     
       var speed = 500;
+
+      obstacle.moveLeft({
+        speed: 10
+      });
+
+      // assure
+      expect(obstacle.x).to.not.equal(previousX);
     
       // when
       obstacle.moveLeft({
@@ -107,7 +117,7 @@ describe('Obstacle', function () {
       });
     
       // then
-      expect(obstacle.x).to.equal(previousX);
+      expect(obstacle.x).to.equal(minX);
       expect(obstacle.x).to.not.equal(previousX - speed);
       
     });

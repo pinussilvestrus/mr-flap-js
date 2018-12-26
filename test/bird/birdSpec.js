@@ -9,6 +9,7 @@ describe('Bird', function () {
   var y = 0;
   var maxY = -30;
   var minY = 50;
+  var color = 'black';
     
   beforeEach(function () {
     
@@ -30,7 +31,8 @@ describe('Bird', function () {
       x: x,
       y: y,
       maxY: maxY,
-      minY: minY
+      minY: minY,
+      color: color
     });
     
     // then
@@ -42,6 +44,7 @@ describe('Bird', function () {
     expect(bird.y).to.equal(y);
     expect(bird.maxY).to.equal(maxY);
     expect(bird.minY).to.equal(minY);
+    expect(bird.color).to.equal(color);
           
   });
   

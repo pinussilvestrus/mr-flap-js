@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/pinussilvestrus/mr-flap-js.svg?branch=master)](https://travis-ci.org/pinussilvestrus/mr-flap-js)
 [![Greenkeeper badge](https://badges.greenkeeper.io/pinussilvestrus/mr-flap-js.svg)](https://greenkeeper.io/)
+[![codecov](https://codecov.io/gh/pinussilvestrus/mr-flap-js/branch/master/graph/badge.svg)](https://codecov.io/gh/pinussilvestrus/mr-flap-js)
 
 Game 'Mr Flap' written in javascript - Work in progress
 

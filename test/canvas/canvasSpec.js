@@ -150,4 +150,33 @@ describe('Canvas', function () {
 
   });
 
+  it('#hitsObstacle', function () {
+
+    // given
+    var canvas = new Canvas({
+      mrflapDiv: mrflapDiv
+    });
+
+    var {
+      obstacleBottom
+    } = canvas.drawObstacle();
+
+    var bird = canvas.drawBird();
+
+    var originalX = obstacleBottom.x;
+
+    // when
+    for (let i = 0; i < 120; i++) {
+
+      canvas.moveObstacles();
+
+    }
+
+    // then
+    expect(bird.x).to.be.gte(obstacleBottom.x);
+    expect(obstacleBottom.x).to.not.equal(originalX);
+    expect(obstacleBottom.x).to.equal(originalX - 300);
+
+  });
+
 });

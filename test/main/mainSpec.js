@@ -1,17 +1,17 @@
 /* global it, describe, expect, before,  __html__, _init, bird, canvas */
 /* eslint-disable no-unused-expressions */
 describe('Main', function () {
-  
+
   const _initPlayground = function () {
 
     $('body').append('<div class="mrflap-playground"></div>');
-  
+
   };
-  
+
   describe('#_init', function (done) {
-      
+
     before(function () {
-      
+
       // given
       document.body.innerHTML = __html__['test.html'];
 
@@ -19,7 +19,7 @@ describe('Main', function () {
 
       // when
       _init();
-    
+
     });
 
     it('should append header', function () {
@@ -27,26 +27,26 @@ describe('Main', function () {
       // then
       expect($('.mrflap-header')[0]).to.exist;
       expect($('.mrflap-header').text()).to.equal('mr-flap-js');
-    
+
     });
 
     it('should append footer', function () {
 
       // then
       expect($('.mrflap-footer')[0]).to.exist;
-    
+
     });
 
     it('should create canvas', function () {
 
       // then
       expect($('.mr-flap-canvas')[0]).to.exist;
-    
+
     });
 
     // todo(pinussvilestrus): implement tests
     it.skip('should binding keyboard events');
-        
+
     it('should start gravitiy', function (done) {
 
       // given
@@ -65,9 +65,9 @@ describe('Main', function () {
         expect(bird.y).to.equal(startY);
 
         done();
-      
+
       }, 500);
-    
+
     });
 
     it('should start moving obstacles', function (done) {
@@ -89,11 +89,11 @@ describe('Main', function () {
         expect(obstacle.shape.x).to.be.below(startX);
 
         done();
-      
-      }, 500);
-    
+
+      }, 800);
+
     });
-  
+
   });
-      
+
 });

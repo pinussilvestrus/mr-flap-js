@@ -17,13 +17,13 @@ var KarmaServ = require('karma').Server;
 const configuration = {
   paths: {
     src: {
-      css: `${__dirname}/lib/**/*.css`,
-      html: `${__dirname}/lib/index.dev.html`,
-      js: `${__dirname}/lib/**/*.js`,
-      vendor: `${__dirname}/lib/vendor/*`
+      css: 'lib/**/*.css',
+      html: 'lib/index.dev.html',
+      js: 'lib/**/*.js',
+      vendor: 'lib/vendor/*'
     },
-    dist: `${__dirname}/dist`,
-    test: `${__dirname}/test`
+    dist: 'dist',
+    test: 'test'
   },
   localServer: {
     port: 8001,

@@ -1,35 +1,35 @@
 /* global it, describe, expect, beforeEach,  __html__, Canvas */
 /* eslint-disable no-unused-expressions */
 describe('Canvas', function () {
-    
+
   var mrflapDiv;
 
   const _initPlayground = function () {
 
     $('body').append('<div class="mrflap-playground"></div>');
-  
+
   };
-  
+
   beforeEach(function () {
-  
+
     document.body.innerHTML = __html__['test.html'];
     _initPlayground();
     mrflapDiv = $('.mrflap-playground');
-    
+
   });
-  
+
   it('#constructor', function () {
-    
+
     // given
     var canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
-  
+
     // then
     expect(canvas).not.to.be.undefined;
     expect(canvas.mrflapDiv).to.equal(mrflapDiv);
     expect(canvas.shapes.length).to.equal(0);
-        
+
   });
 
   it('#drawBird', function () {
@@ -50,7 +50,7 @@ describe('Canvas', function () {
     expect(canvas.shapes[0].id).to.equal('shape-0');
     expect(canvas.shapes[0].shape).to.eql(bird);
     expect(canvas.shapes[0].type).to.equal('Bird');
-  
+
   });
 
   it('#addShape', function () {
@@ -72,7 +72,7 @@ describe('Canvas', function () {
     expect(canvas.shapes.length).to.equal(1);
     expect(canvas.shapes[0].type).to.equal('foo');
     expect(canvas.shapes[0].shape).to.eql(shape);
-  
+
   });
 
   it('#getShape', function () {
@@ -125,10 +125,10 @@ describe('Canvas', function () {
     expect(canvas.shapes[1].id).to.equal('shape-1');
     expect(canvas.shapes[1].shape).to.eql(obstacleTop);
     expect(canvas.shapes[1].type).to.equal('Obstacle');
-  
+
   });
 
-  it('#moveObstacles', function () {
+  it('#collisionDetection', function () {
 
     // given
     var canvas = new Canvas({
@@ -138,7 +138,7 @@ describe('Canvas', function () {
     var {
       obstacleBottom
     } = canvas.drawObstacle();
-    
+
     var originalX = obstacleBottom.x;
 
     // when
@@ -146,8 +146,8 @@ describe('Canvas', function () {
 
     // then
     expect(obstacleBottom.x).to.not.equal(originalX);
-    expect(obstacleBottom.x).to.equal(originalX - 10);
-  
+    expect(obstacleBottom.x).to.equal(originalX - 2.5);
+
   });
-      
+
 });

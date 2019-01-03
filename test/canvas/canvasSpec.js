@@ -166,16 +166,19 @@ describe('Canvas', function () {
     var originalX = obstacleBottom.x;
 
     // when
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < 110; i++) {
 
       canvas.moveObstacles();
 
     }
 
     // then
-    expect(bird.x).to.be.gte(obstacleBottom.x);
+    expect(bird.x + bird.width).to.be.gte(obstacleBottom.x);
+    expect(bird.y + bird.height).to.equal(150);
+    expect(obstacleBottom.y).to.equal(100);
+    expect(bird.y + bird.height).to.be.gte(obstacleBottom.y);
     expect(obstacleBottom.x).to.not.equal(originalX);
-    expect(obstacleBottom.x).to.equal(originalX - 300);
+    expect(obstacleBottom.x).to.equal(originalX - 275);
 
   });
 

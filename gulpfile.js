@@ -23,7 +23,7 @@ const configuration = {
       vendor: 'lib/vendor/*'
     },
     dist: 'dist',
-    test: 'test'
+    test: `${__dirname}/test`
   },
   localServer: {
     port: 8001,

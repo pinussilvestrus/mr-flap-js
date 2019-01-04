@@ -172,6 +172,8 @@ describe('Canvas', function () {
 
     }
 
+    canvas.collisionDetection();
+
     // then
     expect(bird.x + bird.width).to.be.gte(obstacleBottom.x);
     expect(bird.y + bird.height).to.equal(150);

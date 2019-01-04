@@ -3,10 +3,18 @@
 
 describe('Demo index page', function () {
 
+  const _initPlayground = function () {
+
+    $('body').append('<div class="mrflap-playground"></div>');
+  
+  };
+
   it('should expose the templates to __html__', function () {
 
     // given
-    document.body.innerHTML = __html__['index.html'];
+    document.body.innerHTML = __html__['test.html'];
+
+    _initPlayground;
 
     // when
     var playground = $('.mrflap-playground');

@@ -2,12 +2,20 @@
 /* eslint-disable no-unused-expressions */
 describe('Main', function () {
   
+  const _initPlayground = function () {
+
+    $('body').append('<div class="mrflap-playground"></div>');
+  
+  };
+  
   describe('#_init', function (done) {
       
     before(function () {
       
       // given
-      document.body.innerHTML = __html__['index.html'];
+      document.body.innerHTML = __html__['test.html'];
+
+      _initPlayground();
 
       // when
       _init();

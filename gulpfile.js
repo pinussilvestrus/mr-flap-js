@@ -19,6 +19,7 @@ const configuration = {
     src: {
       css: 'lib/**/*.css',
       html: 'lib/index.dev.html',
+      testHtml: 'test/test.html',
       js: 'lib/**/*.js',
       vendor: 'lib/vendor/*'
     },
@@ -38,6 +39,13 @@ gulp.task('clean', function () {
     './dist/*',
     '!./dist/.gitignore'
   ]);
+
+});
+
+gulp.task('testHtml', function () {
+
+  return gulp.src(configuration.paths.src.testHtml)
+    .pipe(gulp.dest(configuration.paths.dist));
 
 });
 
@@ -119,7 +127,7 @@ gulp.task('dev', gulp.parallel(['connect', 'open', 'watch']));
 
 gulp.task('default', gulp.series(['clean', 'html', 'css', 'js', 'vendor']));
 
-gulp.task('test', gulp.series(['default'], function (done) {
+gulp.task('test', gulp.series(['default', 'testHtml'], function (done) {
 
   return new KarmaServ({
     configFile: `${configuration.paths.test}/config/karma.unit.js`,

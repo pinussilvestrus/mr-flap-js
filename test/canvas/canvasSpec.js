@@ -3,10 +3,17 @@
 describe('Canvas', function () {
     
   var mrflapDiv;
+
+  const _initPlayground = function () {
+
+    $('body').append('<div class="mrflap-playground"></div>');
+  
+  };
   
   beforeEach(function () {
   
-    document.body.innerHTML = __html__['index.html'];
+    document.body.innerHTML = __html__['test.html'];
+    _initPlayground();
     mrflapDiv = $('.mrflap-playground');
     
   });

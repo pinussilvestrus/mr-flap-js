@@ -90,7 +90,7 @@ describe('Main', function () {
 
         done();
 
-      }, 800);
+      }, 500);
 
     });
 

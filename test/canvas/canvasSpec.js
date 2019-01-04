@@ -128,7 +128,7 @@ describe('Canvas', function () {
 
   });
 
-  it('#collisionDetection', function () {
+  it('#moveObstacles', function () {
 
     // given
     var canvas = new Canvas({
@@ -150,7 +150,7 @@ describe('Canvas', function () {
 
   });
 
-  it('#hitsObstacle', function () {
+  it('#collisionDetection', function () {
 
     // given
     var canvas = new Canvas({

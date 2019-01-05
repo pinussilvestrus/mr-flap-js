@@ -150,37 +150,80 @@ describe('Canvas', function () {
 
   });
 
-  it('#collisionDetection', function () {
+  describe('#collisionDetection', function () {
 
-    // given
-    var canvas = new Canvas({
-      mrflapDiv: mrflapDiv
+    var canvas, bird;
+
+    beforeEach(function () {
+
+      canvas = new Canvas({
+        mrflapDiv: mrflapDiv
+      });
+  
+      bird = canvas.drawBird();
+
     });
 
-    var {
-      obstacleBottom
-    } = canvas.drawObstacle();
+    it('should hit lower obstacle', function () {
 
-    var bird = canvas.drawBird();
+      // given
+      var {
+        obstacleBottom
+      } = canvas.drawObstacle();
+  
+      var originalX = obstacleBottom.x;
+  
+      // when
+      for (let i = 0; i < 110; i++) {
+  
+        canvas.moveObstacles();
+  
+      }
+  
+      canvas.collisionDetection();
+  
+      // then
+      // todo(pinussilvestrus): test real hit event after it's implemented
+      expect(bird.x + bird.width).to.be.gte(obstacleBottom.x);
+      expect(bird.y + bird.height).to.equal(150);
+      expect(obstacleBottom.y).to.equal(100);
+      expect(bird.y + bird.height).to.be.gte(obstacleBottom.y);
+      expect(obstacleBottom.x).to.not.equal(originalX);
+      expect(obstacleBottom.x).to.equal(originalX - 275);
+  
+    });
 
-    var originalX = obstacleBottom.x;
+    it('should hit upper obstacle', function () {
 
-    // when
-    for (let i = 0; i < 110; i++) {
+      // given
+      var {
+        obstacleTop
+      } = canvas.drawObstacle();
 
-      canvas.moveObstacles();
-
-    }
-
-    canvas.collisionDetection();
-
-    // then
-    expect(bird.x + bird.width).to.be.gte(obstacleBottom.x);
-    expect(bird.y + bird.height).to.equal(150);
-    expect(obstacleBottom.y).to.equal(100);
-    expect(bird.y + bird.height).to.be.gte(obstacleBottom.y);
-    expect(obstacleBottom.x).to.not.equal(originalX);
-    expect(obstacleBottom.x).to.equal(originalX - 275);
+      bird.moveUp({
+        speed: 100
+      });
+  
+      var originalX = obstacleTop.x;
+  
+      // when
+      for (let i = 0; i < 110; i++) {
+  
+        canvas.moveObstacles();
+  
+      }
+  
+      canvas.collisionDetection();
+  
+      // then
+      // todo(pinussilvestrus): test real hit event after it's implemented
+      expect(bird.x + bird.width).to.be.gte(obstacleTop.x);
+      expect(obstacleTop.y).to.equal(0);
+      expect(bird.y + bird.height).to.be.lte(obstacleTop.y + obstacleTop.height);
+      expect(obstacleTop.x).to.not.equal(originalX);
+      expect(obstacleTop.x).to.equal(originalX - 275);
+  
+    });
 
   });
 

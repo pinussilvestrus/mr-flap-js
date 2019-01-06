@@ -94,6 +94,21 @@ describe('Main', function () {
 
     });
 
+    it('should spawn 2 obstacles after 1 second', function (done) {
+
+      // when
+      window.setTimeout(function () {
+
+        // then
+        // todo(pinussilvestrus): change to canvas.obstacles after refactoring (#36)
+        expect(canvas.shapes.length).to.equal(5);
+
+        done();
+      
+      }, 1000);
+    
+    });
+
   });
 
 });

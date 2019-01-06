@@ -108,7 +108,9 @@ describe('Canvas', function () {
     var {
       obstacleBottom,
       obstacleTop
-    } = canvas.drawObstacle();
+    } = canvas.drawObstacle({
+      heightBottom: 50
+    });
 
     // then
 
@@ -137,7 +139,9 @@ describe('Canvas', function () {
 
     var {
       obstacleBottom
-    } = canvas.drawObstacle();
+    } = canvas.drawObstacle({
+      heightBottom: 50
+    });
 
     var originalX = obstacleBottom.x;
 
@@ -169,7 +173,9 @@ describe('Canvas', function () {
       // given
       var {
         obstacleBottom
-      } = canvas.drawObstacle();
+      } = canvas.drawObstacle({
+        heightBottom: 50
+      });
   
       var originalX = obstacleBottom.x;
   
@@ -198,7 +204,9 @@ describe('Canvas', function () {
       // given
       var {
         obstacleTop
-      } = canvas.drawObstacle();
+      } = canvas.drawObstacle({
+        heightBottom: 50
+      });
 
       bird.moveUp({
         speed: 100

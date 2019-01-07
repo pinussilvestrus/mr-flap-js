@@ -98,7 +98,7 @@ describe('Obstacle', function () {
       
     });
   
-    it('should respawn to right if edges arrived', function () {
+    it('should delete if edge is arrived', function () {
   
       var previousX = obstacle.x;
     
@@ -115,10 +115,12 @@ describe('Obstacle', function () {
       obstacle.moveLeft({
         speed: speed
       });
+
+      var isIncluded = canvas.shapes.filter(s => s.id === obstacle.shapeId).length > 0;
     
       // then
-      expect(obstacle.x).to.equal(minX);
       expect(obstacle.x).to.not.equal(previousX - speed);
+      expect(isIncluded).to.be.false;
       
     });
     

@@ -47,7 +47,7 @@ describe('Canvas', function () {
     expect(bird.canvas).to.equal(canvas);
 
     expect(canvas.shapes.length).to.equal(1);
-    expect(canvas.shapes[0].id).to.equal('shape-0');
+    expect(canvas.shapes[0].id).not.to.be.undefined;
     expect(canvas.shapes[0].shape).to.eql(bird);
     expect(canvas.shapes[0].type).to.equal('Bird');
 
@@ -118,13 +118,13 @@ describe('Canvas', function () {
 
     expect(obstacleBottom).not.to.be.undefined;
     expect(obstacleBottom.canvas).to.equal(canvas);
-    expect(canvas.shapes[0].id).to.equal('shape-0');
+    expect(canvas.shapes[0].id).to.equal(obstacleBottom.shapeId);
     expect(canvas.shapes[0].shape).to.eql(obstacleBottom);
     expect(canvas.shapes[0].type).to.equal('Obstacle');
 
     expect(obstacleTop).not.to.be.undefined;
     expect(obstacleTop.canvas).to.equal(canvas);
-    expect(canvas.shapes[1].id).to.equal('shape-1');
+    expect(canvas.shapes[1].id).to.equal(obstacleTop.shapeId);
     expect(canvas.shapes[1].shape).to.eql(obstacleTop);
     expect(canvas.shapes[1].type).to.equal('Obstacle');
 

@@ -71,7 +71,7 @@ gulp.task('js', function () {
 
   return gulp.src(configuration.paths.src.js)
     .pipe(babel({
-      presets: ['es2015']
+      presets: ['@babel/preset-env']
     }))
     .pipe(concat('mrflap.dev.js'))
     .pipe(gulp.dest(configuration.paths.dist))

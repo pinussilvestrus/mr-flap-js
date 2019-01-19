@@ -50,7 +50,7 @@ module.exports = function (config) {
     concurrency: Infinity,
     babelPreprocessor: {
       options: {
-        presets: ['es2015'],
+        presets: ['@babel/preset-env'],
         sourceMap: 'inline'
       },
       filename: function (file) {

@@ -2,19 +2,26 @@
 /* eslint-disable no-unused-expressions */
 describe('Bird', function () {
     
-  var canvas;
-  var width = 12;
-  var height = 12;
-  var x = 0;
-  var y = 0;
-  var maxY = -30;
-  var minY = 50;
-  var color = 'black';
+  let canvas;
+  const width = 12;
+  const height = 12;
+  const x = 0;
+  const y = 0;
+  const maxY = -30;
+  const minY = 50;
+  const color = 'black';
+
+  const _initPlayground = function () {
+
+    $('body').append('<div class="mrflap-playground"></div>');
+
+  };
     
   beforeEach(function () {
     
-    document.body.innerHTML = __html__['index.html'];
-    var mrflapDiv = $('.mrflap-playground');
+    document.body.innerHTML = __html__['test.html'];
+    _initPlayground();
+    const mrflapDiv = $('.mrflap-playground');
     canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
@@ -24,7 +31,7 @@ describe('Bird', function () {
   it('#constructor', function () {
       
     // given
-    var bird = new Bird({
+    const bird = new Bird({
       canvas: canvas,
       width: width,
       height: height,
@@ -51,13 +58,13 @@ describe('Bird', function () {
   it('#draw', function () {
 
     // given
-    var bird = new Bird({
+    const bird = new Bird({
       canvas: canvas
     });
 
     // when
 
-    var id = bird.draw();
+    const id = bird.draw();
 
     // then
     expect(bird).to.exist;
@@ -69,7 +76,7 @@ describe('Bird', function () {
 
   describe('#moveUp', function () {
 
-    var bird;
+    let bird;
 
     before(function () {
 
@@ -82,9 +89,9 @@ describe('Bird', function () {
     it('should move up', function () {
 
       // given
-      var previousY = bird.y;
+      const previousY = bird.y;
   
-      var speed = 10;
+      const speed = 10;
   
       // when
       bird.moveUp({
@@ -99,9 +106,9 @@ describe('Bird', function () {
 
     it('should not move up if edges arrived', function () {
 
-      var previousY = bird.y;
+      const previousY = bird.y;
   
-      var speed = 500;
+      const speed = 500;
   
       // when
       bird.moveUp({
@@ -118,7 +125,7 @@ describe('Bird', function () {
 
   describe('#moveDown', function () {
 
-    var bird;
+    let bird;
 
     before(function () {
 
@@ -132,9 +139,9 @@ describe('Bird', function () {
     it('should move down', function () {
 
       // given
-      var previousY = bird.y;
+      const previousY = bird.y;
   
-      var speed = 10;
+      const speed = 10;
   
       // when
       bird.moveDown({
@@ -149,9 +156,9 @@ describe('Bird', function () {
 
     it('should not move down if edges arrived', function () {
 
-      var previousY = bird.y;
+      const previousY = bird.y;
   
-      var speed = 500;
+      const speed = 500;
   
       // when
       bird.moveDown({

@@ -2,19 +2,26 @@
 /* eslint-disable no-unused-expressions */
 describe('Obstacle', function () {
     
-  var canvas;
-  var width = 12;
-  var height = 12;
-  var x = 20;
-  var y = 0;
-  var maxX = 0;
-  var minX = 200;
-  var color = 'black';
+  let canvas;
+  const width = 12;
+  const height = 12;
+  const x = 20;
+  const y = 0;
+  const maxX = 0;
+  const minX = 200;
+  const color = 'black';
+
+  const _initPlayground = function () {
+
+    $('body').append('<div class="mrflap-playground"></div>');
+
+  };
       
   beforeEach(function () {
       
-    document.body.innerHTML = __html__['index.html'];
-    var mrflapDiv = $('.mrflap-playground');
+    document.body.innerHTML = __html__['test.html'];
+    _initPlayground();
+    const mrflapDiv = $('.mrflap-playground');
     canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
@@ -24,7 +31,7 @@ describe('Obstacle', function () {
   it('#constructor', function () {
         
     // given
-    var obstacle = new Obstacle({
+    const obstacle = new Obstacle({
       canvas: canvas,
       width: width,
       height: height,
@@ -51,13 +58,12 @@ describe('Obstacle', function () {
   it('#draw', function () {
   
     // given
-    var obstacle = new Obstacle({
+    const obstacle = new Obstacle({
       canvas: canvas
     });
   
     // when
-  
-    var id = obstacle.draw();
+    const id = obstacle.draw();
   
     // then
     expect(obstacle).to.exist;
@@ -69,7 +75,7 @@ describe('Obstacle', function () {
   
   describe('#moveLeft', function () {
   
-    var obstacle;
+    let obstacle;
   
     beforeEach(function () {
   
@@ -83,9 +89,9 @@ describe('Obstacle', function () {
     it('should move left', function () {
   
       // given
-      var previousX = obstacle.x;
+      const previousX = obstacle.x;
     
-      var speed = 5;
+      const speed = 5;
     
       // when
       obstacle.moveLeft({
@@ -100,9 +106,9 @@ describe('Obstacle', function () {
   
     it('should delete if edge is arrived', function () {
   
-      var previousX = obstacle.x;
+      const previousX = obstacle.x;
     
-      var speed = 500;
+      const speed = 500;
 
       obstacle.moveLeft({
         speed: 10
@@ -116,7 +122,7 @@ describe('Obstacle', function () {
         speed: speed
       });
 
-      var isIncluded = canvas.shapes.filter(s => s.id === obstacle.shapeId).length > 0;
+      const isIncluded = canvas.shapes.filter(s => s.id === obstacle.shapeId).length > 0;
     
       // then
       expect(obstacle.x).to.not.equal(previousX - speed);

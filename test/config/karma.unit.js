@@ -8,18 +8,13 @@ module.exports = function (config) {
     basePath: '../..',
     frameworks: ['mocha', 'chai'],
     files: [
-      'dist/*',
-      'test/**/*.js',
+      'test/**/*',
       'lib/**/*.js'
     ],
-    exclude: [
-      'lib/jquery/*'
-    ],
     preprocessors: {
-      'dist/**/*.js': ['babel'],
       'test/**/*.js': ['babel'],
-      'dist/*.html': ['html2js'],
-      'lib/**/*.js': ['coverage']
+      'test/*.html': ['html2js'],
+      'lib/**/!(jquery.min).js': ['coverage'] // exclude jquery, include all other
     },
     reporters: ['spec', 'coverage'],
     coverageReporter: {
@@ -55,7 +50,7 @@ module.exports = function (config) {
       },
       filename: function (file) {
 
-        return file.originalPath.replace(/\.js$/, '.es5.js');
+        return file.originalPath;
 
       },
       sourceFileName: function (file) {
@@ -65,7 +60,7 @@ module.exports = function (config) {
       }
     },
     html2JsPreprocessor: {
-      stripPrefix: 'dist/'
+      stripPrefix: 'test/'
     }
 
   });

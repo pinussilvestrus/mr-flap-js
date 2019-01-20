@@ -50,7 +50,7 @@ describe('Main', function () {
     it('should start gravitiy', function (done) {
 
       // given
-      var startY = bird.y;
+      const startY = bird.y;
       bird.moveUp({
         speed: 10
       });
@@ -74,8 +74,8 @@ describe('Main', function () {
 
       // given
       // todo(pinussilvestrus): not using hardcoded index
-      var obstacle = canvas.shapes[1];
-      var startX = obstacle.shape.x;
+      const obstacle = canvas.shapes[1];
+      const startX = obstacle.shape.x;
 
       // assure
       expect(obstacle).to.exist;

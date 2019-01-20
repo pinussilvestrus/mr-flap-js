@@ -2,17 +2,24 @@
 /* eslint-disable no-unused-expressions */
 describe('Footer', function () {
 
-  var flatIcons = [{
+  const flatIcons = [{
     href: 'https://www.foo.bar',
     title: 'Foo'
       
   }];
+
+  const _initPlayground = function () {
+
+    $('body').append('<div class="mrflap-playground"></div>');
+
+  };
   
-  var mrflapDiv;
+  let mrflapDiv;
 
   before(function () {
 
-    document.body.innerHTML = __html__['index.html'];
+    document.body.innerHTML = __html__['test.html'];
+    _initPlayground();
     mrflapDiv = $('.mrflap-playground');
   
   });
@@ -20,7 +27,7 @@ describe('Footer', function () {
   it('#constructor', function () {
   
     // given
-    var footer = new Footer({
+    const footer = new Footer({
       flatIcons: flatIcons,
       mrflapDiv: mrflapDiv
     });
@@ -35,7 +42,7 @@ describe('Footer', function () {
   it('#initCredits', function () {
 
     // given
-    var footer = new Footer({
+    const footer = new Footer({
       flatIcons: flatIcons,
       mrflapDiv: mrflapDiv
     });

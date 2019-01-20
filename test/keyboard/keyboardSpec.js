@@ -5,7 +5,7 @@ describe('KeyboardHandler', function () {
   it('#constructor', function () {
         
     // given
-    var keyboard = new KeyboardHandler();
+    const keyboard = new KeyboardHandler();
       
     // then
     expect(keyboard).not.to.be.undefined;
@@ -16,9 +16,9 @@ describe('KeyboardHandler', function () {
   it('#register', function () {
   
     // given
-    var keyboard = new KeyboardHandler();
+    const keyboard = new KeyboardHandler();
 
-    var keyCode = 'Enter';
+    const keyCode = 'Enter';
 
     // when
     keyboard.register({
@@ -40,9 +40,9 @@ describe('KeyboardHandler', function () {
   it('#execute', function () {
   
     // given
-    var keyboard = new KeyboardHandler();
+    const keyboard = new KeyboardHandler();
 
-    var keyCode = 'Enter';
+    const keyCode = 'Enter';
     keyboard.register({
       keyCode: keyCode,
       fn: function () {
@@ -53,7 +53,7 @@ describe('KeyboardHandler', function () {
     });
 
     // when
-    var result = keyboard.execute({
+    const result = keyboard.execute({
       keyCode: keyCode
     });
       

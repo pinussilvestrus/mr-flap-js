@@ -7,6 +7,7 @@
         "semi": [2, "always"],
         "no-trailing-spaces": ["error", { "skipBlankLines": true }],
         "padded-blocks": ["error", "always"],
+        "no-unused-vars": 0,
         "no-console": "error",
         "no-only-tests/no-only-tests": 2
     },

@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 describe('Canvas', function () {
 
-  var mrflapDiv;
+  let mrflapDiv;
 
   const _initPlayground = function () {
 
@@ -21,7 +21,7 @@ describe('Canvas', function () {
   it('#constructor', function () {
 
     // given
-    var canvas = new Canvas({
+    const canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
 
@@ -35,12 +35,12 @@ describe('Canvas', function () {
   it('#drawBird', function () {
 
     // given
-    var canvas = new Canvas({
+    const canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
 
     // when
-    var bird = canvas.drawBird();
+    const bird = canvas.drawBird();
 
     // then
     expect(bird).not.to.be.undefined;
@@ -56,11 +56,11 @@ describe('Canvas', function () {
   it('#addShape', function () {
 
     // given
-    var canvas = new Canvas({
+    const canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
 
-    var shape = { val: 'foo' };
+    const shape = { val: 'foo' };
 
     // when
     canvas.addShape({
@@ -78,18 +78,18 @@ describe('Canvas', function () {
   it('#getShape', function () {
 
     // given
-    var canvas = new Canvas({
+    const canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
 
-    var shape = { val: 'foo' };
+    const shape = { val: 'foo' };
 
-    var id = canvas.addShape({
+    const id = canvas.addShape({
       shape: shape
     });
 
     // when
-    var s = canvas.getShape(id);
+    const s = canvas.getShape(id);
 
     // then
     expect(s).not.to.be.undefined;
@@ -100,12 +100,12 @@ describe('Canvas', function () {
   it('#drawObstacle', function () {
 
     // given
-    var canvas = new Canvas({
+    const canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
 
     // when
-    var {
+    const {
       obstacleBottom,
       obstacleTop
     } = canvas.drawObstacle({
@@ -133,17 +133,17 @@ describe('Canvas', function () {
   it('#moveObstacles', function () {
 
     // given
-    var canvas = new Canvas({
+    const canvas = new Canvas({
       mrflapDiv: mrflapDiv
     });
 
-    var {
+    const {
       obstacleBottom
     } = canvas.drawObstacle({
       heightBottom: 50
     });
 
-    var originalX = obstacleBottom.x;
+    const originalX = obstacleBottom.x;
 
     // when
     canvas.moveObstacles();
@@ -156,7 +156,7 @@ describe('Canvas', function () {
 
   describe('#collisionDetection', function () {
 
-    var canvas, bird;
+    let canvas, bird;
 
     beforeEach(function () {
 
@@ -171,13 +171,13 @@ describe('Canvas', function () {
     it('should hit lower obstacle', function () {
 
       // given
-      var {
+      const {
         obstacleBottom
       } = canvas.drawObstacle({
         heightBottom: 50
       });
   
-      var originalX = obstacleBottom.x;
+      const originalX = obstacleBottom.x;
   
       // when
       for (let i = 0; i < 110; i++) {
@@ -202,7 +202,7 @@ describe('Canvas', function () {
     it('should hit upper obstacle', function () {
 
       // given
-      var {
+      const {
         obstacleTop
       } = canvas.drawObstacle({
         heightBottom: 50
@@ -212,7 +212,7 @@ describe('Canvas', function () {
         speed: 100
       });
   
-      var originalX = obstacleTop.x;
+      const originalX = obstacleTop.x;
   
       // when
       for (let i = 0; i < 110; i++) {

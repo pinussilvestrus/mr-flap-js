@@ -1,4 +1,4 @@
-/* global it, describe, expect, beforeEach,  __html__, Canvas */
+/* global it, describe, expect, beforeEach,  __html__, Canvas, sinon */
 /* eslint-disable no-unused-expressions */
 describe('Canvas', function () {
 
@@ -156,12 +156,15 @@ describe('Canvas', function () {
 
   describe('#collisionDetection', function () {
 
-    let canvas, bird;
+    let canvas, bird, hitSpy;
 
     beforeEach(function () {
 
+      hitSpy = sinon.spy();
+
       canvas = new Canvas({
-        mrflapDiv: mrflapDiv
+        mrflapDiv: mrflapDiv,
+        onClear: hitSpy
       });
   
       bird = canvas.drawBird();
@@ -176,9 +179,7 @@ describe('Canvas', function () {
       } = canvas.drawObstacle({
         heightBottom: 50
       });
-  
-      const originalX = obstacleBottom.x;
-  
+    
       // when
       for (let i = 0; i < 110; i++) {
   
@@ -189,13 +190,7 @@ describe('Canvas', function () {
       canvas.collisionDetection();
   
       // then
-      // todo(pinussilvestrus): test real hit event after it's implemented
-      expect(bird.x + bird.width).to.be.gte(obstacleBottom.x);
-      expect(bird.y + bird.height).to.equal(150);
-      expect(obstacleBottom.y).to.equal(100);
-      expect(bird.y + bird.height).to.be.gte(obstacleBottom.y);
-      expect(obstacleBottom.x).to.not.equal(originalX);
-      expect(obstacleBottom.x).to.equal(originalX - 275);
+      expect(hitSpy).to.have.been.called;
   
     });
 
@@ -224,12 +219,7 @@ describe('Canvas', function () {
       canvas.collisionDetection();
   
       // then
-      // todo(pinussilvestrus): test real hit event after it's implemented
-      expect(bird.x + bird.width).to.be.gte(obstacleTop.x);
-      expect(obstacleTop.y).to.equal(0);
-      expect(bird.y + bird.height).to.be.lte(obstacleTop.y + obstacleTop.height);
-      expect(obstacleTop.x).to.not.equal(originalX);
-      expect(obstacleTop.x).to.equal(originalX - 275);
+      expect(hitSpy).to.have.been.called;
   
     });
 

@@ -1,4 +1,4 @@
-/* global it, describe, expect, before,  __html__, _init, bird, canvas */
+/* global it, describe, expect, before,  __html__, _init, _reset, bird, canvas, sinon */
 /* eslint-disable no-unused-expressions */
 describe('Main', function () {
 
@@ -8,7 +8,7 @@ describe('Main', function () {
 
   };
 
-  describe('#_init', function (done) {
+  describe('#_init', function () {
 
     before(function () {
 
@@ -44,10 +44,10 @@ describe('Main', function () {
 
     });
 
-    // todo(pinussvilestrus): implement tests
+    // todo(pinussilvestrus): implement tests
     it.skip('should binding keyboard events');
 
-    it('should start gravitiy', function (done) {
+    it('should start gravity', function (done) {
 
       // given
       const startY = bird.y;
@@ -109,6 +109,33 @@ describe('Main', function () {
     
     });
 
+  });
+
+  describe('#_reset', function () {
+
+    before(function () {
+
+      document.body.innerHTML = __html__['test.html'];
+
+      _initPlayground();
+
+      _init();
+
+    });
+
+    it('should reset canvas', function () {
+
+      // given
+      const resetSpy = sinon.spy(canvas, 'reset');
+
+      // when
+      _reset();
+
+      // then
+      expect(resetSpy).to.have.been.called;
+
+    });
+  
   });
 
 });

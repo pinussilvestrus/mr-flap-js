@@ -1,4 +1,4 @@
-/* global it, describe, expect, beforeEach,  __html__, Obstacle, Canvas */
+/* global it, describe, expect, beforeEach,  __html__, Obstacle, Canvas, sinon */
 /* eslint-disable no-unused-expressions */
 describe('Obstacle', function () {
     
@@ -130,6 +130,34 @@ describe('Obstacle', function () {
       
     });
     
+  });
+
+  describe('#clear', function () {
+
+    let obstacle;
+  
+    beforeEach(function () {
+  
+      obstacle = new Obstacle({
+        canvas: canvas,
+        x: x
+      });
+    
+    });
+
+    it('should clear obstacle', function () {
+
+      // given
+      const clearSpy = sinon.spy(canvas.canvasCtx, 'clearRect');
+
+      // when
+      obstacle.clear();
+
+      // then
+      expect(clearSpy).to.have.been.called;
+      
+    });
+  
   });
           
 });

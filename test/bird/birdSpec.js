@@ -1,4 +1,4 @@
-/* global it, describe, expect, beforeEach, before,  __html__, Bird, Canvas */
+/* global it, describe, expect, beforeEach, before,  __html__, Bird, Canvas, sinon */
 /* eslint-disable no-unused-expressions */
 describe('Bird', function () {
     
@@ -169,6 +169,34 @@ describe('Bird', function () {
       expect(bird.y).to.equal(previousY);
       expect(bird.y).to.not.equal(previousY + speed);
     
+    });
+  
+  });
+
+  describe('#clear', function () {
+
+    let bird;
+
+    beforeEach(function () {
+
+      bird = new Bird({
+        canvas: canvas,
+        minY: 100
+      });
+  
+    });
+
+    it('should clear bird', function () {
+
+      // given
+      const clearSpy = sinon.spy(canvas.canvasCtx, 'clearRect');
+
+      // when
+      bird.clear();
+
+      // then
+      expect(clearSpy).to.have.been.called;
+      
     });
   
   });

@@ -2,5 +2,3 @@
 *
 # Except this file
 !.gitignore
-!mrflap.min.js
-!mrflap.min.css

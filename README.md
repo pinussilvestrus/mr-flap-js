@@ -63,3 +63,12 @@ $ npm run test
 ## Definition of Done
 
 See our [Definition of Done](https://github.com/pinussilvestrus/mr-flap-js/blob/master/DEFINITION_OF_DONE.md).
+
+## Releasing
+
+We use [`np`](https://github.com/sindresorhus/np) for releasing new versions
+
+```sh
+$ npm i -g np
+$ np
+```

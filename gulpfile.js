@@ -12,6 +12,12 @@ const rename = require('gulp-rename');
 
 const babel = require('gulp-babel');
 
+const uglify = require('gulp-uglify');
+
+const uglifycss = require('gulp-uglifycss');
+
+const pump = require('pump');
+
 var KarmaServ = require('karma').Server;
 
 const configuration = {
@@ -23,6 +29,14 @@ const configuration = {
       vendor: 'lib/vendor/*'
     },
     dist: 'dist',
+    dev: {
+      css: 'mrflap.dev.css',
+      js: 'mrflap.dev.js'
+    },
+    prod: {
+      css: 'mrflap.min.css',
+      js: 'mrflap.min.js'
+    },
     test: `${__dirname}/test`
   },
   localServer: {
@@ -31,6 +45,8 @@ const configuration = {
     url: 'http://localhost:8001/'
   }
 };
+
+/** DEVELOPMENT  ******/
 
 gulp.task('clean', function () {
 
@@ -53,7 +69,7 @@ gulp.task('html', function () {
 gulp.task('css', function () {
 
   return gulp.src(configuration.paths.src.css)
-    .pipe(concat('mrflap.dev.css'))
+    .pipe(concat(configuration.paths.dev.css))
     .pipe(gulp.dest(configuration.paths.dist))
     .pipe(connect.reload());
 
@@ -65,7 +81,7 @@ gulp.task('js', function () {
     .pipe(babel({
       presets: ['@babel/preset-env']
     }))
-    .pipe(concat('mrflap.dev.js'))
+    .pipe(concat(configuration.paths.dev.js))
     .pipe(gulp.dest(configuration.paths.dist))
     .pipe(connect.reload());
 
@@ -119,6 +135,8 @@ gulp.task('dev', gulp.parallel(['connect', 'open', 'watch']));
 
 gulp.task('default', gulp.series(['clean', 'html', 'css', 'js', 'vendor']));
 
+/** TESTING  ******/
+
 gulp.task('test', gulp.series(['default'], function (done) {
 
   return new KarmaServ({
@@ -127,3 +145,29 @@ gulp.task('test', gulp.series(['default'], function (done) {
   }, done).start();
 
 }));
+
+/** PRODUCTION  ******/
+
+gulp.task('buildJs', function (done) {
+
+  pump([
+    gulp.src(`${configuration.paths.dist}/${configuration.paths.dev.js}`),
+    rename(configuration.paths.prod.js),
+    uglify(),
+    gulp.dest('dist')
+  ], done);
+
+});
+
+gulp.task('buildCss', function (done) {
+
+  pump([
+    gulp.src(`${configuration.paths.dist}/${configuration.paths.dev.css}`),
+    rename(configuration.paths.prod.css),
+    uglifycss(),
+    gulp.dest('dist')
+  ], done);
+
+});
+
+gulp.task('build', gulp.series(['default', 'buildJs', 'buildCss']));

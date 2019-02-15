@@ -4,7 +4,40 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/pinussilvestrus/mr-flap-js.svg)](https://greenkeeper.io/)
 [![codecov](https://codecov.io/gh/pinussilvestrus/mr-flap-js/branch/master/graph/badge.svg)](https://codecov.io/gh/pinussilvestrus/mr-flap-js)
 
-Game 'Mr Flap' written in javascript - Work in progress
+Game 'Mr Flap' written in plain javascript - Work in progress
+
+![Screencast gif](./resources/screen.gif)
+
+
+# Installation
+
+Use the latest [bundled version](./dist/), a specific [release](https://github.com/pinussilvestrus/mr-flap-js/releases) or simply create your own bundle:
+
+```sh
+$ npm run build
+```
+
+Simply integrate the `js` and `css` source files inside your HTML document:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./mrflap.min.css">
+
+        <script type="text/javascript" src="./mrflap.min.js"></script>
+    </head>
+
+    <body>
+
+        <div class="mrflap-playground"></div>
+
+    </body>
+</html>
+```
+
+Make sure the `mrflap-playground` element is available to render the game inside.
+
 
 # Development
 ```sh

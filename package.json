@@ -1,6 +1,6 @@
 {
   "name": "mr-flap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Game `Mr Flap` written in javascript",
   "main": "index.js",
   "scripts": {

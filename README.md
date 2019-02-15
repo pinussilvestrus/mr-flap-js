@@ -45,7 +45,7 @@ $ npm i
 $ npm run dev
 ```
 
-# Testing
+## Testing
 ```sh
 $ npm run test
 ```

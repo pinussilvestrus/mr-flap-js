@@ -52,7 +52,8 @@ gulp.task('clean', function () {
 
   return del([
     './dist/*',
-    '!./dist/.gitignore'
+    '!./dist/.gitignore',
+    '!./dist/mrflap.min.*'
   ]);
 
 });

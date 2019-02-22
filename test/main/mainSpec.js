@@ -73,13 +73,11 @@ describe('Main', function () {
     it('should start moving obstacles', function (done) {
 
       // given
-      // todo(pinussilvestrus): not using hardcoded index
-      const obstacle = canvas.shapes[1];
+      const obstacle = canvas.obstacles[0];
       const startX = obstacle.shape.x;
 
       // assure
       expect(obstacle).to.exist;
-      expect(obstacle.type).to.equal('Obstacle');
 
       // then
       window.setTimeout(function () {
@@ -100,8 +98,7 @@ describe('Main', function () {
       window.setTimeout(function () {
 
         // then
-        // todo(pinussilvestrus): change to canvas.obstacles after refactoring (#36)
-        expect(canvas.shapes.length).to.equal(5);
+        expect(canvas.obstacles.length).to.equal(4);
 
         done();
       

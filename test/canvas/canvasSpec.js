@@ -28,7 +28,7 @@ describe('Canvas', function () {
     // then
     expect(canvas).not.to.be.undefined;
     expect(canvas.mrflapDiv).to.equal(mrflapDiv);
-    expect(canvas.shapes.length).to.equal(0);
+    expect(canvas.obstacles.length).to.equal(0);
 
   });
 
@@ -46,14 +46,15 @@ describe('Canvas', function () {
     expect(bird).not.to.be.undefined;
     expect(bird.canvas).to.equal(canvas);
 
-    expect(canvas.shapes.length).to.equal(1);
-    expect(canvas.shapes[0].id).not.to.be.undefined;
-    expect(canvas.shapes[0].shape).to.eql(bird);
-    expect(canvas.shapes[0].type).to.equal('Bird');
+    const canvasBird = canvas.bird;
+
+    expect(canvasBird).to.exist;
+    expect(canvasBird.id).not.to.be.undefined;
+    expect(canvasBird.shape).to.eql(bird);
 
   });
 
-  it('#addShape', function () {
+  it('#addObstacle', function () {
 
     // given
     const canvas = new Canvas({
@@ -63,19 +64,19 @@ describe('Canvas', function () {
     const shape = { val: 'foo' };
 
     // when
-    canvas.addShape({
-      type: 'foo',
-      shape: shape
+    canvas.addObstacle({
+      obstacleShape: shape
     });
 
     // then
-    expect(canvas.shapes.length).to.equal(1);
-    expect(canvas.shapes[0].type).to.equal('foo');
-    expect(canvas.shapes[0].shape).to.eql(shape);
+    const obstacles = canvas.obstacles;
+
+    expect(obstacles.length).to.equal(1);
+    expect(obstacles[0].shape).to.eql(shape);
 
   });
 
-  it('#getShape', function () {
+  it('#addBird', function () {
 
     // given
     const canvas = new Canvas({
@@ -84,16 +85,38 @@ describe('Canvas', function () {
 
     const shape = { val: 'foo' };
 
-    const id = canvas.addShape({
-      shape: shape
+    // when
+    canvas.addBird({
+      birdShape: shape
+    });
+
+    // then
+    const bird = canvas.bird;
+
+    expect(bird).to.exist;
+    expect(bird.shape).to.eql(shape);
+
+  });
+
+  it('#getObstacle', function () {
+
+    // given
+    const canvas = new Canvas({
+      mrflapDiv: mrflapDiv
+    });
+
+    const shape = { val: 'foo' };
+
+    const id = canvas.addObstacle({
+      obstacleShape: shape
     });
 
     // when
-    const s = canvas.getShape(id);
+    const o = canvas.getObstacle(id);
 
     // then
-    expect(s).not.to.be.undefined;
-    expect(s.shape).to.eql(shape);
+    expect(o).not.to.be.undefined;
+    expect(o.shape).to.eql(shape);
 
   });
 
@@ -113,20 +136,19 @@ describe('Canvas', function () {
     });
 
     // then
+    const obstacles = canvas.obstacles;
 
-    expect(canvas.shapes.length).to.equal(2);
+    expect(obstacles.length).to.equal(2);
 
     expect(obstacleBottom).not.to.be.undefined;
     expect(obstacleBottom.canvas).to.equal(canvas);
-    expect(canvas.shapes[0].id).to.equal(obstacleBottom.shapeId);
-    expect(canvas.shapes[0].shape).to.eql(obstacleBottom);
-    expect(canvas.shapes[0].type).to.equal('Obstacle');
+    expect(obstacles[0].id).to.equal(obstacleBottom.obstacleId);
+    expect(obstacles[0].shape).to.eql(obstacleBottom);
 
     expect(obstacleTop).not.to.be.undefined;
     expect(obstacleTop.canvas).to.equal(canvas);
-    expect(canvas.shapes[1].id).to.equal(obstacleTop.shapeId);
-    expect(canvas.shapes[1].shape).to.eql(obstacleTop);
-    expect(canvas.shapes[1].type).to.equal('Obstacle');
+    expect(obstacles[1].id).to.equal(obstacleTop.obstacleId);
+    expect(obstacles[1].shape).to.eql(obstacleTop);
 
   });
 

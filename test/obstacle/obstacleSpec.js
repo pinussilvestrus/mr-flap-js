@@ -67,9 +67,9 @@ describe('Obstacle', function () {
   
     // then
     expect(obstacle).to.exist;
-    expect(canvas.shapes.length).to.equal(1);
-    expect(canvas.getShape(id)).not.to.be.undefined;
-    expect(canvas.getShape(id).shape).to.eql(obstacle);
+    expect(canvas.obstacles.length).to.equal(1);
+    expect(canvas.getObstacle(id)).not.to.be.undefined;
+    expect(canvas.getObstacle(id).shape).to.eql(obstacle);
     
   });
   
@@ -122,7 +122,7 @@ describe('Obstacle', function () {
         speed: speed
       });
 
-      const isIncluded = canvas.shapes.filter(s => s.id === obstacle.shapeId).length > 0;
+      const isIncluded = canvas.obstacles.filter(s => s.id === obstacle.obstacleId).length > 0;
     
       // then
       expect(obstacle.x).to.not.equal(previousX - speed);

@@ -68,9 +68,8 @@ describe('Bird', function () {
 
     // then
     expect(bird).to.exist;
-    expect(canvas.shapes.length).to.equal(1);
-    expect(canvas.getShape(id)).not.to.be.undefined;
-    expect(canvas.getShape(id).shape).to.eql(bird);
+    expect(canvas.bird).exist;
+    expect(canvas.bird.id).to.eql(id);
   
   });
 

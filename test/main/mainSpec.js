@@ -1,4 +1,4 @@
-/* global it, describe, expect, before,  __html__, _init, _reset, bird, canvas, sinon */
+/* global it, describe, expect, before,  __html__, _init, _reset, bird, canvas, sinon, _isTestMode */
 /* eslint-disable no-unused-expressions */
 describe('Main', function () {
 
@@ -106,6 +106,20 @@ describe('Main', function () {
     
     });
 
+  });
+
+  describe('#_isTestMode', function () {
+
+    it('should return true in test mode', function () {
+
+      // given
+      const isTestMode = _isTestMode();
+
+      // then
+      expect(isTestMode).to.be.true;
+    
+    });
+  
   });
 
   describe('#_reset', function () {

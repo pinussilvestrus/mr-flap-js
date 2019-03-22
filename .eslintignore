@@ -1,4 +1,5 @@
 dist/
 node_modules/
 lib/jquery/
+lib/threadify
 coverage/

@@ -140,6 +140,8 @@ gulp.task('default', gulp.series(['clean', 'html', 'css', 'js', 'vendor']));
 
 gulp.task('test', gulp.series(['default'], function (done) {
 
+  process.env.NODE_ENV = 'test';
+
   return new KarmaServ({
     configFile: `${configuration.paths.test}/config/karma.unit.js`,
     singleRun: true

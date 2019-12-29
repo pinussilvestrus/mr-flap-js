@@ -1,3 +1,12 @@
+@font-face {
+    font-family: Oswald;
+    src: url(vendor/oswald/static/Oswald-Light.ttf);
+}
+  
+body {
+    font-family: Oswald;
+}
+
 .mrflap-figure {
     display: block;
     margin-left: auto;

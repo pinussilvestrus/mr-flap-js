@@ -1,6 +1,6 @@
 .mrflap-footer {
     position: fixed;
-    bottom: 0;
-    margin-bottom: 20px;
+    bottom: 20px;
+    left: 20px;
     width: 100%;
 }

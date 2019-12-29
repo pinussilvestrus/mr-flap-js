@@ -26,7 +26,7 @@ const configuration = {
       css: 'lib/**/*.css',
       html: 'lib/index.dev.html',
       js: 'lib/**/*.js',
-      vendor: 'lib/vendor/*'
+      vendor: 'lib/vendor/**/*'
     },
     dist: 'dist',
     dev: {

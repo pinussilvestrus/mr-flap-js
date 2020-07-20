@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/pinussilvestrus/mr-flap-js#readme",
   "devDependencies": {
-    "@babel/core": "^7.10.4",
+    "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "chai": "^4.2.0",
     "eslint": "^7.4.0",

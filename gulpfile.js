@@ -1,3 +1,5 @@
+const path = require('path');
+
 const gulp = require('gulp');
 
 const open = require('gulp-open');
@@ -18,7 +20,7 @@ const uglifycss = require('gulp-uglifycss');
 
 const pump = require('pump');
 
-var KarmaServ = require('karma').Server;
+const KarmaServ = require('karma').Server;
 
 const configuration = {
   paths: {
@@ -37,7 +39,7 @@ const configuration = {
       css: 'mrflap.min.css',
       js: 'mrflap.min.js'
     },
-    test: `${__dirname}/test`
+    test: path.join(__dirname, 'test')
   },
   localServer: {
     port: 8001,

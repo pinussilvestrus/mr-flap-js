@@ -17,7 +17,7 @@ describe('Demo index page', function () {
     _initPlayground;
 
     // when
-    var playground = $('.mrflap-playground');
+    const playground = $('.mrflap-playground');
 
     // then
     expect(playground).not.to.be.undefined;

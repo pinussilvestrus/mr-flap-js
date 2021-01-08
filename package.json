@@ -4,10 +4,12 @@
   "description": "Game `Mr Flap` written in javascript",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint && npm run test:unit",
+    "test": "run-s lint test:unit",
     "test:unit": "gulp test",
     "lint": "eslint .",
-    "dev": "gulp default && gulp dev",
+    "gulp:default": "gulp default",
+    "gulp:dev": "gulp dev",
+    "dev": "run-s gulp:default gulp:dev",
     "build": "gulp build"
   },
   "repository": {
@@ -24,8 +26,8 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "chai": "^4.2.0",
-    "eslint": "^7.17.0",
     "del": "6.0.0",
+    "eslint": "^7.17.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-no-only-tests": "^2.4.0",
@@ -53,10 +55,10 @@
     "karma-sinon-chai": "^2.0.2",
     "karma-spec-reporter": "0.0.32",
     "mocha": "^8.2.1",
-    "npm": "^6.14.10",
+    "npm-run-all": "^4.1.5",
     "pump": "^3.0.0",
     "requirejs": "^2.3.6",
-    "sinon": "^9.2.2",
+    "sinon": "^9.2.3",
     "sinon-chai": "^3.5.0",
     "uninstall": "0.0.0"
   }

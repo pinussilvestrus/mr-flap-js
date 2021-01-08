@@ -32,7 +32,7 @@ jobs:
     - name: Install codecov
       run: npm install -g codecov
     - name: Execute tests
-      run: npm test
+      run: TEST_BROWSERS=ChromeHeadless npm test
       env:
         CI: true
     - name: Transfer results to codecov

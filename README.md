@@ -1,9 +1,8 @@
 # mr-flap-js
 
-[![Build Status](https://travis-ci.org/pinussilvestrus/mr-flap-js.svg?branch=master)](https://travis-ci.org/pinussilvestrus/mr-flap-js)
-[![codecov](https://codecov.io/gh/pinussilvestrus/mr-flap-js/branch/master/graph/badge.svg)](https://codecov.io/gh/pinussilvestrus/mr-flap-js)
+![Build Status](https://github.com/pinussilvestrus/mr-flap-js/workflows/ci/badge.svg) [![codecov](https://codecov.io/gh/pinussilvestrus/mr-flap-js/branch/master/graph/badge.svg)](https://codecov.io/gh/pinussilvestrus/mr-flap-js)
 
-Game 'Mr Flap' written in plain javascript - Work in progress
+Game 'Mr Flap' written in plain javascript. Available as embeddable library.
 
 ![Screencast gif](./resources/screen.gif)
 

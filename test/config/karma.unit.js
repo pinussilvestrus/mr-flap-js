@@ -1,7 +1,8 @@
-// Karma configuration
-// Generated on Thu Dec 20 2018 19:22:16 GMT+0100 (Central European Standard Time)
-
 module.exports = function (config) {
+
+  const browsers = (process.env.TEST_BROWSERS ||
+    'Chrome,ChromeHeadless,ChromeHeadlessNoSandbox'
+  ).split(',');
 
   config.set({
 
@@ -33,7 +34,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessNoSandbox'],
+    browsers: browsers,
 
     customLaunchers: {
       ChromeHeadlessNoSandbox: {

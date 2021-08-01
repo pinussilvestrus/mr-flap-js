@@ -27,7 +27,7 @@
     "@babel/preset-env": "^7.14.8",
     "chai": "^4.3.4",
     "del": "6.0.0",
-    "eslint": "^7.31.0",
+    "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-no-only-tests": "^2.6.0",

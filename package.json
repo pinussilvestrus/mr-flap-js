@@ -2,7 +2,7 @@
   "name": "mr-flap",
   "version": "1.2.1",
   "description": "Game `Mr Flap` written in javascript",
-  "main": "index.js",
+  "main": "dist/mrflap.min.js",
   "files": [
     "dist",
     "src"
@@ -67,5 +67,8 @@
     "sinon": "^15.0.4",
     "sinon-chai": "^3.7.0",
     "uninstall": "0.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.0"
   }
 }

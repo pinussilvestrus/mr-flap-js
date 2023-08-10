@@ -3,6 +3,10 @@
   "version": "1.2.0",
   "description": "Game `Mr Flap` written in javascript",
   "main": "index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "all": "run-s test",
     "test": "run-s lint test:unit",
